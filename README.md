@@ -2,15 +2,35 @@
 
 # 🧮 Calculus & Optimization Deep Dive
 
-**"`loss.backward()`를 호출하는 것과, 역전파가 야코비안의 연쇄 행렬곱이라는 기하학적 본질을 아는 것은 다르다"**
+### `loss.backward()` 를 **호출하는 것** 과,
+
+### 역전파가 **야코비안의 연쇄 행렬곱**
+
+$$\frac{\partial L}{\partial \theta_1} = \frac{\partial L}{\partial f_n} \cdot \frac{\partial f_n}{\partial f_{n-1}} \cdots \frac{\partial f_2}{\partial f_1} \cdot \frac{\partial f_1}{\partial \theta_1}$$
+
+### 이라는 **기하학적 본질** 을 아는 것은 **다르다.**
 
 <br/>
 
-> *"Adam 옵티마이저를 쓰는 것과 — Adam은 볼록이 아닌 문제에서 수렴을 보장하지 않는다는 사실을 반례로 알 수 있는 것은 다르다.  
-> `∇` 기호를 외우는 것과, 방향도함수가 어떻게 기울기와 연결되는지 코시-슈바르츠로 증명할 수 있는 것은 다르다."*
+> *Adam 옵티마이저를 **쓰는 것** 과, **Adam 은 볼록이 아닌 문제에서 수렴을 보장하지 않는다** 는 사실을 Reddi 2018 의 반례로 알 수 있는 것은 다르다.*
+>
+> *$\nabla$ 기호를 **외우는 것** 과, 방향도함수가 기울기와 어떻게 연결되는지 — **코시–슈바르츠 부등식**으로*
+>
+> $$\nabla_u f = \langle \nabla f, u \rangle \;\leq\; \|\nabla f\|$$
+>
+> *증명할 수 있는 것은 다르다.*
 
-ε-δ 정의부터 시작해 야코비안 행렬곱으로서의 역전파, 옵티마이저의 수렴 증명, NumPy Autograd 구현까지  
-**"왜 이렇게 작동하는가"** 라는 질문으로 신경망 학습의 수학적 기반을 끝까지 파헤칩니다
+<br/>
+
+**다루는 정리 (시간순)**
+
+Cauchy 1821 *ε–δ 정의 + 코시–슈바르츠* · Newton–Leibniz 1687 *미적분 기본정리* · Lagrange 1797 *Lagrange 승수* · Cauchy 1847 *Steepest descent* · Werbos 1974 / Rumelhart 1986 *Backpropagation* · Robbins–Monro 1951 *확률근사* · Nesterov 1983 *$O(1/T^2)$ 가속* · Kingma 2014 *Adam* · Reddi 2018 *Adam 반례*
+
+<br/>
+
+**핵심 질문**
+
+> **왜 이렇게 작동하는가** — ε–δ 정의부터 시작해 **야코비안 행렬곱으로서의 역전파** · 옵티마이저의 수렴 증명 · NumPy Autograd 구현까지, 신경망 학습의 수학적 기반을 끝까지 파헤칩니다.
 
 <br/>
 
